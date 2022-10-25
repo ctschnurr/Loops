@@ -14,6 +14,9 @@ namespace Loops
 
         static int x;
         static int y;
+
+        static int maxX = 60;
+        static int maxY = 30;
         static void Main(string[] args)
         {
             gameOver = false;
@@ -58,7 +61,7 @@ namespace Loops
                     }
 
                 case ConsoleKey.S:
-                    if (y >= 30)
+                    if (y >= maxY)
                     {
                         break;
                     }
@@ -80,7 +83,7 @@ namespace Loops
                     }
 
                 case ConsoleKey.D:
-                    if (x >= 15)
+                    if (x >= maxX)
                     {
                         break;
                     }
