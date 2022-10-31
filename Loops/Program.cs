@@ -9,35 +9,73 @@ namespace Loops
     internal class Program
     {
 
+
+
         static bool gameOver;
         static ConsoleKeyInfo choice;
 
         static int x;
         static int y;
 
-        static int maxX = 60;
-        static int maxY = 30;
+        static string character;
+
+        static int maxX = 30;
+        static int maxY = 10;
         static void Main(string[] args)
         {
             gameOver = false;
             x = 5;
             y = 5;
+            character = "0";
 
             while (gameOver == false)
             {
                 Console.Clear();
+                DrawMap();
                 PlayerDraw(x, y);
                 PlayerUpdate();
             }
+        }
 
+        static void DrawMap()
+        {
+            string border = "|";
+            int count = 0;
 
+            Console.Write(".");
+            while (count <= (maxX - 2))
+            {
+                Console.Write("-");
+                count = count + 1;
+            }
 
+            Console.WriteLine(".");
+
+            count = 0;
+
+            while (count < maxY)
+            {
+                Console.WriteLine(border.PadRight(maxX) + border);
+                count = count + 1;
+            }
+
+            Console.Write("'");
+
+            count = 0;
+
+            while (count <= (maxX - 2))
+            {
+                Console.Write("-");
+                count = count + 1;
+            }
+
+            Console.WriteLine("'");
         }
 
         static void PlayerDraw(int x, int y)
         {
             Console.SetCursorPosition(x, y);
-            Console.WriteLine("0");
+            Console.WriteLine(character);
         }
 
         static void PlayerUpdate()
@@ -50,7 +88,7 @@ namespace Loops
                     break;
 
                 case ConsoleKey.W:
-                    if (y == 0)
+                    if (y == 1)
                     {
                         break;
                     }
@@ -72,7 +110,7 @@ namespace Loops
                     }
 
                 case ConsoleKey.A:
-                    if (x == 0)
+                    if (x == 1)
                     {
                         break;
                     }
@@ -83,7 +121,7 @@ namespace Loops
                     }
 
                 case ConsoleKey.D:
-                    if (x >= maxX)
+                    if (x >= (maxX -1))
                     {
                         break;
                     }
